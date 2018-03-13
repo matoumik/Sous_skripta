@@ -1,0 +1,63 @@
+\documentclass[fykos]{fksgeneric}
+\usepackage{amsmath}
+
+\begin{document}
+
+\newtheorem{definice}{Definice}
+\newtheorem{veta}{Věta}
+
+\rightheader{soustředění jaro 2018}
+%\centering
+\hspace{2cm}
+\section{Kvantový mišmaš}
+\hspace{2cm}
+\subsection{Poděkování}
+Při sepisování tohoto textu jsem vycházel z knihy Úvod do kvantové mechaniky od
+\textbf{Prof. RNDr. Lubomíra Skály, DrSc.}, kterou doporučuju hlubším zálemcům o toto téma.
+\subsection{Úvod}
+Někdy kolem roku 1900 se zjistilo, že fyzika mikrosvěta se chová minimálně \uv{divně}.
+Na základě několika experimentů se vybudovala v první polovině 20. století komplexní teorie, která je základem moderních fyzikálních teorií.
+
+\subsection{Úvod do formalismu}
+V klasické mechanice je systém popisován pomocí dvou veličin, polohy a hybnosti, pro každý hmotný bod soustavy. To znamená pro 3D prostoru se jedná o $6N$ proměnných, 
+tedy $6N$ dimenziální fázový prostor, který popisuje jakykoliv stav systému.
+
+Naproti tomu prostor stavů v kvantovce je obecně nekonečnědimenzionální. Je popisován vlnovou funkcí $\Psi(x,t): \mathbb{R}^3 \rightarrow \mathbb{C}$, která v daném čase popisuje stav systému. Máme na ní několik požadavků. Předně musí být konečná, spojitá a pro rozumné potenciály pak i $C^1$. Samotná vlnová funkce nemá žáný přímý fyzikální význam, ale veličina $\abs{\Psi}^2 = \Psi^\ast\Psi = P\d V$ jeasterisc hustota pravděpodobnosti výskytu částice. Pravděpdobnost výskytu částice v nějaké množině $\Omega$ získáme přeintegrováním této veličiny přes tuto množinu. Proto získáváme třetí požadavek na
+funkci, protože částice někde být musí, čímž získáme třetí požadavek
+\eq{\int_{\mathbb{R}^3} \Psi^\ast\Psi \d x= 1.}
+Toto odpovídá na prostoru funkcí skalárnímu součínu, čímž vlastně chceme, aby norma vektoru byla jednotková.
+
+Fyzikální veličiny jsou naproti tomu reprezentovány operátory, které působí na vlnovou funkci systému. Už z podstaty výsledku je zřejmé, že nedostaneme konkrétní hodnotu, ale
+zase nějakou funkci. Ale můžeme změřit střední hodnotu pomocí
+\eq{\left\langle \hat{A} \right\rangle = \int_{\mathbb{R}^3} \Psi^\ast \hat{A} \Psi \d x.}
+Pravděpodobnost naměření určité hodnoty získáme pomocí rozvoje $\Psi$ do vlastních funkcí daného operátoru.
+
+
+\subsection{Schrödingerova rovnice}
+Časový vývoj systému je dán speciálním operátorem nazývaným Hamiltonián, který je kvantovou podobou operátoru z klasické mechaniky. Na rozdíl od klasické mechaniky je definován jednoduššeji $\hat{H} = \hat{T} + \hat{V}$, kde $\hat{T}$ je operátor kinetické energie, definovaný většinou pomoc
+\eq{\hat{T}=\frac{\hat{p}^2}{2m}=-\frac{\hbar^2}{2m}\Delta,}
+a $\hat{V}$ je potenciál, definovaný pro daný problém, jehož chování hledáme.
+Tento vývoj je dán časovou Schrödingerovou rovnicí
+\eq{i\hbar\pder{\Psi}{t}=\hat{H}\Psi:}
+Pokud tbar Hamiltoniánu nezávisí na čase, můžeme hledat řešení ve tvaru součinu funkce, která nezávisí na čase a funkce, která nezávisí na prostorových proměnných. Tím pak získáme dvě nezávislé diferenciální rovnice, které řešíme zvlášť.
+Nás především zajímá ta pro prostorovou závislost funkce, která se nazývá nečasovou (bezčasovou Schrödingerovou rovnicí. Její tvar je
+\eq{\hat{H}\Psi=E\Psi.}
+
+Všimněte si, že na pravé straně je konstanta krát původní funkce, což efektivně říká, že uvedená rovnice je jen hledáním vlastních funkcí a vlastních čísel operátoru. Pokud najdeme ty, pak vývoj systému je dán pomocí
+\eq{\Psi(x,t)=\sum_n c_n \Psi_n \eu^{-\im\frac{E_n}{\hbar}t}}
+Pro časově závislý Hamiltonián nám nezbývá než zkusit řešit časovou Schrodingerovu rovnici přímo. Pokud je systém ve vlastním stavu hamiltoniánu, je hustota pravděpodobnosti nezávislá na čase a systém je \uv{zamrzlý}, což je jev, který z klasické mechaniky neznáme.
+
+\subsection{Operátory}
+I na operátory máme určité požadavky. Abychom mohli použít bohaté teorie z oblasti lineární algebry, chceme aby operátory byly lineární. Dále chceme, aby operátory, které odpovídající měřitelným veličinám byly hermitovské, z čehož jednak vyplývá, že mají reálné spektrum, druhak nedegenerované vlastní funkce jsou navzájem ortogonální, což nám často usnadní výpočty.
+Máme především operátory souřadnice,
+\eq{\hat{x}\Psi = x\Psi,\; \hat{y}\Psi = y\Psi,\; \hat{z}\Psi = z\Psi}
+Ty tedy jen danou souřadnicí přenásobí vlnovou funkci.
+
+Naopak složky hybnosti jsou definovány naopak pomocí
+\eq{\hat{p}_x=-\im\hbar\pder{}{x},\; \hat{p}_y=-\im\hbar\pder{}{y},\; \hat{p}_z=-\im\hbar\pder{}{z}}
+
+Máme-li dva operátory, zavádíme jejich komutátor pomocí
+\eq{\left[\hat{A},\hat{B}\right]=\hat{A}\hat{B}-\hat{B}\hat{A}.}
+Pokud komutátor je nulový, tak operátory mají hezčí vlastnosti. Můžeme prohazovat ve výpčtech operátory, ale hlavně tyto dva operátory mají společný systém vlastních funkcí,
+čehož se často využívá.
+\end{document}
